@@ -27,11 +27,11 @@ class Util {
     }
 
     public static int genUniqueStudentID() {
-        int randomID = (int)Math.random() * 10000;
+        int randomID = (int)(Math.random() * 10000);
         
         for (int i = 0 ; i < Main.students.size();i++) {
             if (Main.students.get(i).get_ID() == randomID) {
-                randomID = (int)Math.random() * 10000;
+                randomID = (int)(Math.random() * 10000);
                 i = 0;
             }
         }
@@ -40,11 +40,11 @@ class Util {
     }
 
     public static int genUniqueCourseID() {
-        int randomID = (int)Math.random() * 10000;
+        int randomID = (int)(Math.random() * 10000);
         
         for (int i = 0 ; i < Main.courses.size();i++) {
             if (Main.courses.get(i).get_ID() == randomID) {
-                randomID = (int)Math.random() * 10000;
+                randomID = (int)(Math.random() * 10000);
                 i = 0;
             }
         }
@@ -72,7 +72,7 @@ public class Main {
         student2.enroll(course2);
 
         student1.printStudentCard();
-        student2.printStudentCourses();
+        student2.printStudentCard();
         course1.printCourseCard();
         course2.printCourseCard();
     }

@@ -70,20 +70,15 @@ public class Course {
         System.out.println("---------------------------");
     }
 
-    public static Course readCourseInfo() {
-        Course tempCourse = new Course();
 
-        tempCourse.set_maxDegree(Util.readValidNumber("Enter course max degree: "));
-        tempCourse.set_name(Util.readString("Enter course name: "));
-        tempCourse.set_content(Util.readString("Enter course content"));
-        tempCourse.set_duration(Util.readString("Enter course duration: "));
-        return tempCourse;
-    }
-
-    public static void createCourse() {
-        Course newCourse = readCourseInfo();
-
-        Main.courses.add(newCourse);
+    public void createCourse() {
+        set_ID(Util.genUniqueCourseID());
+        set_maxDegree(Util.readValidNumber("Enter course max degree: "));
+        set_name(Util.readString("Enter course name: "));
+        set_content(Util.readString("Enter course content"));
+        set_duration(Util.readString("Enter course duration: "));
+        
+        Main.courses.add(this);
     }
 
     public static int findCourse() {

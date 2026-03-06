@@ -95,6 +95,7 @@ public class Student {
     }
 
     public void createStudent() {
+        set_ID(Util.genUniqueStudentID());
         set_firstName(Util.readString("Enter first name: "));
         set_lastName(Util.readString("Enter last name: "));
         set_age(Util.readValidNumber("Enter you age: "));
