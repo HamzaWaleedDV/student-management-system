@@ -7,12 +7,12 @@ public class Student {
     private String _lastName;
 
     public Student(String firstName, String lastName, int age, int grade, int seatNumber) {
-        _firstName = firstName;
-        _lastName = lastName;
-        _age = age;
-        _ID = Util.genUniqueID();
-        _seatNumber = seatNumber;
-        _grade = grade;
+        set_firstName(firstName);
+        set_lastName(lastName);
+        set_age(age);
+        set_ID(Util.genUniqueStudentID());
+        set_seatNumber(seatNumber);
+        set_grade(grade);
     }
 
     public int get_ID() {
@@ -28,7 +28,7 @@ public class Student {
     }
 
     public void set_age(int _age) {
-        this._age = _age;
+            this._age = _age;
     }
 
     public int get_grade() {
@@ -66,11 +66,11 @@ public class Student {
     public void printStudentCard() {
         System.out.println("Student Card:");
         System.out.println("------------------------");
-        System.out.println("ID: " + get_ID());
-        System.out.println("Full Name: " + get_firstName() + " " + get_lastName());
-        System.out.println("Age: " + get_age());
-        System.out.println("Seat Number: " + get_seatNumber());
-        System.out.println("Grade: " + get_grade());
+        System.out.println("ID          : " + get_ID());
+        System.out.println("Full Name   : " + get_firstName() + " " + get_lastName());
+        System.out.println("Age         : " + get_age());
+        System.out.println("Seat Number : " + get_seatNumber());
+        System.out.println("Grade       : " + get_grade());
         System.out.println("------------------------");
     }
 
@@ -131,32 +131,6 @@ public class Student {
                 break;
         }
     }
-
-    // public void updateStudent() {
-    //     String userInput = Util
-    //             .readString("What do you want to update? (First Name, Last Name, Age, Grade, Seat Number)");
-    //     switch (userInput) {
-    //         case "First Name":
-    //             String firstName = Util.readString("Please enter new First Name: ");
-    //             set_firstName(firstName);
-    //             break;
-    //         case "Last Name":
-    //             String lastname = Util.readString("Please enter new Last Name: ");
-    //             set_lastName(lastname);
-    //         case "Age":
-    //             int age = Util.readValidNumber("Please Enter new age: ");
-    //             set_age(age);
-    //         case "Grade":
-    //             int grade = Util.readValidNumber("Please Enter new grade: ");
-    //             set_grade(grade);
-    //         case "Seat Number":
-    //             int seatNumber = Util.readValidNumber("Please Enter new Seat Number: ");
-    //             set_seatNumber(seatNumber);
-    //         default:
-    //             System.out.println("Invalid input, Please Try again.");
-    //             break;
-    //     }
-    // }
 
     public static void deleteStudent() {
         int index = findStudent();

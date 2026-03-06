@@ -24,3 +24,9 @@ STUDENT:
 
 class --> (Fields) ID, first name, last name, age, seat number, grade.
 (Methods) create, find, delete, update.
+
+----------------------------------------------------------
+COURSES:
+
+class --> (Fields) ID, title, content, Duration, Max Degree.
+(Methods) create, find, delete, update.
