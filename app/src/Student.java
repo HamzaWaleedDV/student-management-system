@@ -9,17 +9,13 @@ public class Student {
     private String _lastName;
     private ArrayList<Course> enrolledCourses = new ArrayList<Course>();
 
-    public Student() {
-        System.out.println("\nEnter Student Info: ");
-        System.out.println("-----------------------------------");
+    public Student(int age, int grade, int seatNumber, String firstName, String lastName) {
         set_ID(Util.genUniqueStudentID());
-        set_firstName(Util.readString("Enter first name: "));
-        set_lastName(Util.readString("Enter last name: "));
-        set_age(Util.readValidNumber("Enter you age: "));
-        set_grade(Util.readValidNumber("Enter your grade: "));
-        set_seatNumber(Util.readValidNumber("Enter your seat number: "));
-        System.out.println("-----------------------------------");
-        System.out.println("");
+        set_firstName(firstName);
+        set_lastName(lastName);
+        set_age(age);
+        set_grade(grade);
+        set_seatNumber(seatNumber);
 
         Main.students.add(this);
     }
@@ -109,61 +105,39 @@ public class Student {
         }
     }
 
-    public static int findStudent() {
-        int id;
+    public static int findStudent(int studentID) {
 
-        do {
-            id = Util.readValidNumber("Enter the Student ID: ");
+        for (int i = 0; i < Main.students.size(); i++)
+            if (Main.students.get(i).get_ID() == studentID)
+                return i;
 
-            for (int i = 0; i < Main.students.size(); i++)
-                if (Main.students.get(i).get_ID() == id)
-                    return i;
+        return -1;
 
-            System.out.println("The Student ID: " + id + " not found, please try again . . .");
-
-        } while (true);
     }
 
-    public static void updateStudent() {
-        int index = findStudent();
-        Main.students.get(index).printStudentCard();
-        String userInput = Util
-                .readString("What do you want to update? (First Name, Last Name, Age, Grade, Seat Number)");
-        switch (userInput) {
+    public static boolean updateStudent(int studentIndex, String targetString, String desString) {
+        switch (targetString) {
             case "First Name":
-                String firstName = Util.readString("Please enter new First Name: ");
-                Main.students.get(index).set_firstName(firstName);
-                break;
+                Main.students.get(studentIndex).set_firstName(desString);
+                return true;
             case "Last Name":
-                String lastname = Util.readString("Please enter new Last Name: ");
-                Main.students.get(index).set_lastName(lastname);
+                Main.students.get(studentIndex).set_lastName(desString);
+                return true;
             case "Age":
-                int age = Util.readValidNumber("Please Enter new age: ");
-                Main.students.get(index).set_age(age);
+                Main.students.get(studentIndex).set_age(Integer.parseInt(desString));
+                return true;
             case "Grade":
-                int grade = Util.readValidNumber("Please Enter new grade: ");
-                Main.students.get(index).set_grade(grade);
+                Main.students.get(studentIndex).set_grade(Integer.parseInt(desString));
+                return true;
             case "Seat Number":
-                int seatNumber = Util.readValidNumber("Please Enter new Seat Number: ");
-                Main.students.get(index).set_seatNumber(seatNumber);
+                Main.students.get(studentIndex).set_seatNumber(Integer.parseInt(desString));
+                return true;
             default:
-                System.out.println("Invalid input, Please Try again.");
-                break;
+                return false;
         }
     }
 
-    public static void deleteStudent() {
-        int index = findStudent();
-        Main.students.get(index).printStudentCard();
-        String userInput = Util
-                .readString("Are you sure you wnat to delete this student? (Y, N)");
-        switch (userInput) {
-            case "Y":
-                Main.students.remove(index);
-                break;
-            default:
-                System.out.println("Nothing have changed.");
-                break;
-        }
+    public static void deleteStudent(int studentIndex) {
+        Main.students.remove(studentIndex);
     }
 }
