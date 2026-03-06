@@ -6,8 +6,6 @@ public class Course {
     private String _content;
     private String _duration;
 
-
-
     public Course(int _maxDegree, int students, String _name, String _content, String _duration) {
         set_ID(Util.genUniqueCourseID());
         set_maxDegree(_maxDegree);
@@ -35,11 +33,11 @@ public class Course {
         this._maxDegree = _maxDegree;
     }
 
-    public  int getStudents() {
+    public int getStudents() {
         return students;
     }
 
-    public  void setStudents(int students) {
+    public void setStudents(int students) {
         this.students = students;
     }
 
@@ -79,58 +77,45 @@ public class Course {
         System.out.println("---------------------------");
     }
 
-    public static int findCourse() {
-        int id;
-
-        do {
-            id = Util.readValidNumber("Enter the Course ID: ");
-
-            for (int i = 0; i < Main.courses.size(); i++)
-                if (Main.courses.get(i).get_ID() == id)
-                    return i;
-
-            System.out.println("The Course ID: " + id + " not found, please try again . . .");
-
-        } while (true);
+    public static int findCourse(int id) {
+        for (int i = 0; i < Main.courses.size(); i++)
+            if (Main.courses.get(i).get_ID() == id)
+                return i;
+        return -1;
     }
 
-    public static void updateCourse() {
-        int index = findCourse();
-        Main.courses.get(index).printCourseCard();
-        String userInput = Util
-                .readString("What do you want to update? (Course Title, Content, Duration, Max Degree)");
+    public static int updateCourse(int index, String userInput, String newinfo) {
         switch (userInput) {
             case "Course Title":
-                String name = Util.readString("Please enter new Course Title: ");
-                Main.courses.get(index).set_name(name);
-                break;
+                Main.courses.get(index).set_name(newinfo);
+                return 1;
             case "Content":
-                String content = Util.readString("Please enter new Course Content: ");
-                Main.courses.get(index).set_content(content);
+                Main.courses.get(index).set_content(newinfo);
+                return 1;
             case "Duration":
-                String duration = Util.readString("Please Enter new Duration: ");
-                Main.courses.get(index).set_duration(duration);
-            case "Max Degree":
-                int maxDegree = Util.readValidNumber("Please Enter new Max Degree: ");
-                Main.courses.get(index).set_maxDegree(maxDegree);
+                Main.courses.get(index).set_duration(newinfo);
+                return 1;
             default:
-                System.out.println("Invalid input, Please Try again.");
-                break;
+                return 0;
         }
     }
 
-    public static void deleteCourse() {
-        int index = findCourse();
-        Main.courses.get(index).printCourseCard();
-        String userInput = Util
-                .readString("Are you sure you wnat to delete this student? (Y, N)");
+    public static int updateCourse(int index, String userInput, int newinfo) {
         switch (userInput) {
-            case "Y":
-                Main.courses.remove(index);
-                break;
+            case "Max Degree":
+                Main.courses.get(index).set_maxDegree(newinfo);
+                return 1;
             default:
-                System.out.println("Nothing have changed.");
-                break;
+                return 0;
+        }
+    }
+
+    public static int deleteCourse(int index) {
+        if (index >= 0 && index < Main.courses.size()) {
+            Main.courses.remove(index);
+            return 1;
+        } else {
+            return 0;
         }
     }
 
