@@ -61,19 +61,9 @@ public class Main {
 
         Course course1 = new Course(100, 0, "Java", "OOP Programming Language", "3 Months");
         Course course2 = new Course(80, 0, "Python", "General Purpose Programming Language", "2 Months");
-<<<<<<< HEAD
         course1.printCourseCard();
         course2.printCourseCard();
 
-=======
-        Student student1 = new Student();
-        // Student student2 = new Student();
-        student1.enroll(course1);
-        student1.printStudentCourses();
-        student1.printStudentCard();
-        student1.enroll(course2);
-        student1.printStudentCourses();
->>>>>>> Omar
     }
     
 }
