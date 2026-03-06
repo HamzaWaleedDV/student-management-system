@@ -1,7 +1,3 @@
-import java.util.Random;
-import java.util.Scanner;
-import java.util.ArrayList;
-
 public class Student {
     private int _ID;
     private int _age;
@@ -110,7 +106,6 @@ public class Student {
 
     public static void updateStudent() {
         int index = findStudent();
-        Scanner scanner = new Scanner(System.in);
         Main.students.get(index).printStudentCard();
         String userInput = Util
                 .readString("What do you want to update? (First Name, Last Name, Age, Grade, Seat Number)");
@@ -165,7 +160,6 @@ public class Student {
 
     public static void deleteStudent() {
         int index = findStudent();
-        Scanner scanner = new Scanner(System.in);
         Main.students.get(index).printStudentCard();
         String userInput = Util
                 .readString("Are you sure you wnat to delete this student? (Y, N)");
@@ -177,6 +171,5 @@ public class Student {
                 System.out.println("Nothing have changed.");
                 break;
         }
-        
     }
 }
