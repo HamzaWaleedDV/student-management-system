@@ -1,13 +1,22 @@
 public class Course {
     private int _ID;
     private int _maxDegree;
-    private static int students = 0;
+    private int students = 0;
     private String _name;
     private String _content;
     private String _duration;
 
-    public Course() {
-        students++;
+
+
+    public Course(int _maxDegree, int students, String _name, String _content, String _duration) {
+        set_ID(Util.genUniqueCourseID());
+        set_maxDegree(_maxDegree);
+        setStudents(students);
+        set_name(_name);
+        set_content(_content);
+        set_duration(_duration);
+        Main.courses.add(this);
+        this.students++;
     }
 
     public int get_ID() {
@@ -26,12 +35,12 @@ public class Course {
         this._maxDegree = _maxDegree;
     }
 
-    public static int getStudents() {
+    public  int getStudents() {
         return students;
     }
 
-    public static void setStudents(int students) {
-        Course.students = students;
+    public  void setStudents(int students) {
+        this.students = students;
     }
 
     public String get_name() {
@@ -68,17 +77,6 @@ public class Course {
         System.out.println("Max Degree       : " + get_maxDegree());
         System.out.println("Enrolled Student : " + students);
         System.out.println("---------------------------");
-    }
-
-
-    public void createCourse() {
-        set_ID(Util.genUniqueCourseID());
-        set_maxDegree(Util.readValidNumber("Enter course max degree: "));
-        set_name(Util.readString("Enter course name: "));
-        set_content(Util.readString("Enter course content"));
-        set_duration(Util.readString("Enter course duration: "));
-        
-        Main.courses.add(this);
     }
 
     public static int findCourse() {

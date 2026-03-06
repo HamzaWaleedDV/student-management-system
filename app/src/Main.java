@@ -58,10 +58,16 @@ public class Main {
     public static ArrayList<Student> students = new ArrayList<Student>();
     public static ArrayList<Course>  courses  = new ArrayList<Course> ();
     public static void main(String[] args) {
+
+        Course course1 = new Course(100, 0, "Java", "OOP Programming Language", "3 Months");
+        Course course2 = new Course(80, 0, "Python", "General Purpose Programming Language", "2 Months");
+        course1.printCourseCard();
+        course2.printCourseCard();
         Student student1 = new Student();
         Student student2 = new Student();
 
         student1.printStudentCard();
         student2.printStudentCard();
     }
+    
 }
