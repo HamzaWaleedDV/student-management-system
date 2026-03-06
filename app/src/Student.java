@@ -9,6 +9,21 @@ public class Student {
     private String _lastName;
     private ArrayList<Course> enrolledCourses = new ArrayList<Course>();
 
+    public Student() {
+        System.out.println("\nEnter Student Info: ");
+        System.out.println("-----------------------------------");
+        set_ID(Util.genUniqueStudentID());
+        set_firstName(Util.readString("Enter first name: "));
+        set_lastName(Util.readString("Enter last name: "));
+        set_age(Util.readValidNumber("Enter you age: "));
+        set_grade(Util.readValidNumber("Enter your grade: "));
+        set_seatNumber(Util.readValidNumber("Enter your seat number: "));
+        System.out.println("-----------------------------------");
+        System.out.println("");
+
+        Main.students.add(this);
+    }
+
     public int get_ID() {
         return _ID;
     }
@@ -92,16 +107,6 @@ public class Student {
             System.out.println("Max Degree       : " + enrolledCourse.get_maxDegree());
             System.out.println("---------------------------");
         }
-    }
-
-    public void createStudent() {
-        set_firstName(Util.readString("Enter first name: "));
-        set_lastName(Util.readString("Enter last name: "));
-        set_age(Util.readValidNumber("Enter you age: "));
-        set_grade(Util.readValidNumber("Enter your grade: "));
-        set_seatNumber(Util.readValidNumber("Enter your seat number: "));
-        
-        Main.students.add(this);
     }
 
     public static int findStudent() {
