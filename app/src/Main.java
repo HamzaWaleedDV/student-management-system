@@ -27,11 +27,11 @@ class Util {
     }
 
     public static int genUniqueStudentID() {
-        int randomID = (int)Math.random() * 10000;
+        int randomID = (int)(Math.random() * 10000);
         
         for (int i = 0 ; i < Main.students.size();i++) {
             if (Main.students.get(i).get_ID() == randomID) {
-                randomID = (int)Math.random() * 10000;
+                randomID = (int)(Math.random() * 10000);
                 i = 0;
             }
         }
@@ -40,11 +40,11 @@ class Util {
     }
 
     public static int genUniqueCourseID() {
-        int randomID = (int)Math.random() * 10000;
+        int randomID = (int)(Math.random() * 10000);
         
         for (int i = 0 ; i < Main.courses.size();i++) {
             if (Main.courses.get(i).get_ID() == randomID) {
-                randomID = (int)Math.random() * 10000;
+                randomID = (int)(Math.random() * 10000);
                 i = 0;
             }
         }
@@ -58,22 +58,11 @@ public class Main {
     public static ArrayList<Student> students = new ArrayList<Student>();
     public static ArrayList<Course>  courses  = new ArrayList<Course> ();
     public static void main(String[] args) {
-        Student student1 = new Student();
-        student1.createStudent();
-        Student student2 = new Student();
-        student2.createStudent();
-        Course course1 = new Course();
-        course1.createCourse();
-        Course course2 = new Course();
-        course2.createCourse();
 
-
-        student1.enroll(course1);
-        student2.enroll(course2);
-
-        student1.printStudentCard();
-        student2.printStudentCourses();
+        Course course1 = new Course(100, 0, "Java", "OOP Programming Language", "3 Months");
+        Course course2 = new Course(80, 0, "Python", "General Purpose Programming Language", "2 Months");
         course1.printCourseCard();
         course2.printCourseCard();
     }
+    
 }
