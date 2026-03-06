@@ -1,0 +1,26 @@
+Requirements:
+1 - CRUD students.
+    A - ID, first name, last name, seat number, age, grade.
+
+2 - get my school card (id, name, seat Number).
+
+3 - Courses System:
+    A - CRUD Courses.
+        I - ID, Name, Content, Duration, Max Degree.
+    B - enroll Student in Courses.
+    C - Get Cours info.
+
+    STUDENTS <----> COURSES (Enrollments):
+    ID,
+    CourseID,
+    StudentID,
+    Date,
+    Progress,
+    Status,
+    Degree.
+
+----------------------------------------------------------
+STUDENT:
+
+class --> (Fields) ID, first name, last name, age, seat number, grade.
+(Methods) create, find, delete, update.
