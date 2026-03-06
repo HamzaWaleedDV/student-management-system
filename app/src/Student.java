@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Student {
     private int _ID;
     private int _age;
@@ -5,15 +7,7 @@ public class Student {
     private int _seatNumber;
     private String _firstName;
     private String _lastName;
-
-    public Student(String firstName, String lastName, int age, int grade, int seatNumber) {
-        set_firstName(firstName);
-        set_lastName(lastName);
-        set_age(age);
-        set_ID(Util.genUniqueStudentID());
-        set_seatNumber(seatNumber);
-        set_grade(grade);
-    }
+    private ArrayList<Course> enrolledCourses = new ArrayList<Course>();
 
     public int get_ID() {
         return _ID;
@@ -28,7 +22,7 @@ public class Student {
     }
 
     public void set_age(int _age) {
-            this._age = _age;
+        this._age = _age;
     }
 
     public int get_grade() {
@@ -63,6 +57,14 @@ public class Student {
         this._lastName = _lastName;
     }
 
+    public void enroll(Course newCourse) {
+        enrolledCourses.add(newCourse);
+    }
+
+    public ArrayList<Course> get_courses() {
+        return enrolledCourses;
+    }
+
     public void printStudentCard() {
         System.out.println("Student Card:");
         System.out.println("------------------------");
@@ -74,19 +76,32 @@ public class Student {
         System.out.println("------------------------");
     }
 
-    public static Student readStudentInfo() {
-        Student tempStudent = new Student(
-                Util.readString("Enter first name: "), Util.readString("Enter last name: "),
-                Util.readValidNumber("Enter you age: "), Util.readValidNumber("Enter your grade: "),
-                Util.readValidNumber("Enter your seat number: "));
+    public void printStudentCourses() {
+        if (enrolledCourses.size() == 0) {
+            System.out.println("Student not enrolled in any course.");
+            return;
+        }
 
-        return tempStudent;
+        for (Course enrolledCourse : enrolledCourses) {
+            System.out.println("Course Info:");
+            System.out.println("---------------------------");
+            System.out.println("ID               : " + enrolledCourse.get_ID());
+            System.out.println("Name             : " + enrolledCourse.get_name());
+            System.out.println("Content          : " + enrolledCourse.get_content());
+            System.out.println("Duration         : " + enrolledCourse.get_duration());
+            System.out.println("Max Degree       : " + enrolledCourse.get_maxDegree());
+            System.out.println("---------------------------");
+        }
     }
 
-    public static void createStudent() {
-        Student newStudent = readStudentInfo();
-
-        Main.students.add(newStudent);
+    public void createStudent() {
+        set_firstName(Util.readString("Enter first name: "));
+        set_lastName(Util.readString("Enter last name: "));
+        set_age(Util.readValidNumber("Enter you age: "));
+        set_grade(Util.readValidNumber("Enter your grade: "));
+        set_seatNumber(Util.readValidNumber("Enter your seat number: "));
+        
+        Main.students.add(this);
     }
 
     public static int findStudent() {

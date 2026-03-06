@@ -3,9 +3,9 @@ import java.util.Scanner;
 
 class Util {
     public static String readString(String message){
+        System.out.print(message);
         Scanner scanner = new Scanner(System.in);
         String str = scanner.nextLine();
-        scanner.close();
         
         return str;
     }
@@ -22,7 +22,6 @@ class Util {
         }
 
         num = scanner.nextInt();
-        scanner.close();
 
         return num;
     }
@@ -59,6 +58,22 @@ public class Main {
     public static ArrayList<Student> students = new ArrayList<Student>();
     public static ArrayList<Course>  courses  = new ArrayList<Course> ();
     public static void main(String[] args) {
+        Student student1 = new Student();
+        student1.createStudent();
+        Student student2 = new Student();
+        student2.createStudent();
+        Course course1 = new Course();
+        course1.createCourse();
+        Course course2 = new Course();
+        course2.createCourse();
 
+
+        student1.enroll(course1);
+        student2.enroll(course2);
+
+        student1.printStudentCard();
+        student2.printStudentCourses();
+        course1.printCourseCard();
+        course2.printCourseCard();
     }
 }

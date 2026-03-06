@@ -6,12 +6,7 @@ public class Course {
     private String _content;
     private String _duration;
 
-    public Course(int _maxDegree, String _name, String _content, String _duration) {
-        set_ID(Util.genUniqueCourseID());
-        set_maxDegree(_maxDegree);
-        set_name(_name);
-        set_content(_content);
-        set_duration(_duration);
+    public Course() {
         students++;
     }
 
@@ -76,10 +71,12 @@ public class Course {
     }
 
     public static Course readCourseInfo() {
-        Course tempCourse = new Course(
-                Util.readValidNumber("Enter course max degree: "), Util.readString("Enter course name: "),
-                Util.readString("Enter course content"), Util.readString("Enter course duration: "));
+        Course tempCourse = new Course();
 
+        tempCourse.set_maxDegree(Util.readValidNumber("Enter course max degree: "));
+        tempCourse.set_name(Util.readString("Enter course name: "));
+        tempCourse.set_content(Util.readString("Enter course content"));
+        tempCourse.set_duration(Util.readString("Enter course duration: "));
         return tempCourse;
     }
 
