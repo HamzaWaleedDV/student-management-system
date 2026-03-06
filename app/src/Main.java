@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+<<<<<<< HEAD
 import java.util.Random;
+=======
+>>>>>>> d326ee86fcce2b88ed6135981d25c8a0408238fa
 
 class Util {
     public static String readString(String message){
@@ -48,5 +51,9 @@ public class Main {
     
     public static void main(String[] args) {
 
+<<<<<<< HEAD
     }   
+=======
+    }
+>>>>>>> d326ee86fcce2b88ed6135981d25c8a0408238fa
 }

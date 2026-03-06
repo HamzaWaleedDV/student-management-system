@@ -67,16 +67,49 @@ public class Student {
         this._lastName = _lastName;
     }
 
-    public static void createStudent() {
-        Student newStudent = new Student(Util.readString("Enter first name: "), Util.readString("Enter last name: "),
+    public void printStudentCard() {
+        System.out.println("Student Card:");
+        System.out.println("------------------------");
+        System.out.println("ID: " + get_ID());
+        System.out.println("Full Name: " + get_firstName() + " " + get_lastName());
+        System.out.println("Age: " + get_age());
+        System.out.println("Seat Number: " + get_seatNumber());
+        System.out.println("Grade: " + get_grade());
+        System.out.println("------------------------");
+    }
+
+    public static Student readStudentInfo() {
+        Student tempStudent = new Student(
+                Util.readString("Enter first name: "), Util.readString("Enter last name: "),
                 Util.readValidNumber("Enter you age: "), Util.readValidNumber("Enter your grade: "),
                 Util.readValidNumber("Enter your seat number: "));
+
+        return tempStudent;
+    }
+
+    public static void createStudent() {
+        Student newStudent = readStudentInfo();
 
         Main.students.add(newStudent);
     }
 
+    public static int findStudent() {
+        int id;
+
+        do {
+            id = Util.readValidNumber("Enter the Student ID: ");
+
+            for (int i = 0; i < Main.students.size(); i++)
+                if (Main.students.get(i).get_ID() == id)
+                    return i;
+
+            System.out.println("The Student ID: " + id + " not found, please try again . . .");
+
+        } while (true);
+    }
+
     public static void updateStudent() {
-        int index = findStudent(Util.readValidNumber("Please Enter Student ID: "));
+        int index = findStudent();
         Scanner scanner = new Scanner(System.in);
         Main.students.get(index).printStudentCard();
         String userInput = Util
@@ -131,7 +164,7 @@ public class Student {
     // }
 
     public static void deleteStudent() {
-        int index = findStudent(Util.readValidNumber("Please Enter Student ID: "));
+        int index = findStudent();
         Scanner scanner = new Scanner(System.in);
         Main.students.get(index).printStudentCard();
         String userInput = Util
@@ -146,5 +179,4 @@ public class Student {
         }
         
     }
-
 }
