@@ -6,15 +6,13 @@ public class Course {
     private String _content;
     private String _duration;
 
-    public Course(int _maxDegree, int students, String _name, String _content, String _duration) {
+    public Course(int _maxDegree, String _name, String _content, String _duration) {
         set_ID(Util.genUniqueCourseID());
         set_maxDegree(_maxDegree);
-        setStudents(students);
         set_name(_name);
         set_content(_content);
         set_duration(_duration);
         Main.courses.add(this);
-        this.students++;
     }
 
     public int get_ID() {
@@ -109,9 +107,23 @@ public class Course {
                 return 0;
         }
     }
+    
+
+    private static void deleteCoursesFromStudent(int id){
+        for(int i = 0 ; i > Main.students.size();i++){
+                for(int j = 0 ; j > Main.students.get(i).get_courses().size() ; j++){
+                    if (id == Main.students.get(i).get_courses().get(j).get_ID()) {
+                        Main.students.get(i).get_courses().remove(j);
+                        j--; 
+                    }
+                }
+            }
+        }
+
 
     public static int deleteCourse(int index) {
         if (index >= 0 && index < Main.courses.size()) {
+            deleteCoursesFromStudent(Main.courses.get(index).get_ID());
             Main.courses.remove(index);
             return 1;
         } else {
