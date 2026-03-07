@@ -70,6 +70,7 @@ public class Student {
 
     public void enroll(Course newCourse) {
         enrolledCourses.add(newCourse);
+        newCourse.setStudents(newCourse.getStudents() + 1);
     }
 
     public ArrayList<Course> get_courses() {
@@ -137,7 +138,14 @@ public class Student {
         }
     }
 
-    public static void deleteStudent(int studentIndex) {
+    public static boolean deleteStudent(int studentIndex) {
+        if (findStudent(studentIndex) == -1)
+            return false;
+
+        for (Course course : Main.students.get(studentIndex).enrolledCourses)
+            course.setStudents(course.getStudents() - 1);
+
         Main.students.remove(studentIndex);
+        return true;
     }
 }
