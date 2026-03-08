@@ -109,7 +109,7 @@ public class Course {
     }
     
 
-    private static void deleteCoursesFromStudent(int id){
+    private static void deleteCoursesFromStudent(int id) {
         for(int i = 0 ; i > Main.students.size();i++){
                 for(int j = 0 ; j > Main.students.get(i).get_courses().size() ; j++){
                     if (id == Main.students.get(i).get_courses().get(j).get_ID()) {
@@ -118,7 +118,7 @@ public class Course {
                     }
                 }
             }
-        }
+    }
 
 
     public static int deleteCourse(int index) {
