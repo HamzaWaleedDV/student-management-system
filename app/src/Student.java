@@ -102,7 +102,7 @@ public class Student {
             System.out.println("Content          : " + enrolledCourse.get_content());
             System.out.println("Duration         : " + enrolledCourse.get_duration());
             System.out.println("Max Degree       : " + enrolledCourse.get_maxDegree());
-            System.out.println("---------------------------");
+            System.out.println("---------------------------\n");
         }
     }
 

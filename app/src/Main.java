@@ -59,6 +59,7 @@ public class Main {
     public static ArrayList<Course>  courses  = new ArrayList<Course> ();
     public static void main(String[] args) {
 
+        ui.printMainMenu();
 
     }
     
