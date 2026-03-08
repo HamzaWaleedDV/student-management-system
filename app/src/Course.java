@@ -82,29 +82,29 @@ public class Course {
         return -1;
     }
 
-    public static int updateCourse(int index, String userInput, String newinfo) {
+    public static boolean updateCourse(int index, String userInput, String newinfo) {
         switch (userInput) {
             case "Course Title":
                 Main.courses.get(index).set_name(newinfo);
-                return 1;
+                return true;
             case "Content":
                 Main.courses.get(index).set_content(newinfo);
-                return 1;
+                return true;
             case "Duration":
                 Main.courses.get(index).set_duration(newinfo);
-                return 1;
+                return true;
             default:
-                return 0;
+                return false;
         }
     }
 
-    public static int updateCourse(int index, String userInput, int newinfo) {
+    public static boolean updateCourse(int index, String userInput, int newinfo) {
         switch (userInput) {
             case "Max Degree":
                 Main.courses.get(index).set_maxDegree(newinfo);
-                return 1;
+                return true;
             default:
-                return 0;
+                return false;
         }
     }
     
@@ -121,13 +121,13 @@ public class Course {
     }
 
 
-    public static int deleteCourse(int index) {
+    public static boolean deleteCourse(int index) {
         if (index >= 0 && index < Main.courses.size()) {
             deleteCoursesFromStudent(Main.courses.get(index).get_ID());
             Main.courses.remove(index);
-            return 1;
+            return true;
         } else {
-            return 0;
+            return false;
         }
     }
 
